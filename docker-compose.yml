@@ -1,0 +1,28 @@
+version: '3.4'
+services:
+  frontend:
+    build:
+      context: docker/frontend
+      network: host
+#    ports:
+#      - 8080:8080
+    volumes:
+      - ./:/project
+    working_dir: /project/frontend
+    networks:
+      - chcepograc-net
+#    command: "npm start"
+    tty: true
+  backend:
+    build: docker/backend
+    ports:
+      - 8080:8080
+    volumes:
+      - ./:/project
+    working_dir: /project
+    networks:
+      - chcepograc-net
+    command: "java -jar /project/out/artifacts/chcepograc_jar/app.jar"
+networks:
+  chcepograc-net:
+    driver: bridge
