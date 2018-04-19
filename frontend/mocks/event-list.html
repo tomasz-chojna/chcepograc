@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="bootstrap-material-design-dist/css/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="css/offcanvas.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
+    <title>Chcę pograć!</title>
+
+    <style>
+        .event-info span {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light container">
+
+    <a class="navbar-brand" href="#">
+        <img src="img/run.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+        Chcę Pograć!
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Lista wydarzeń <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Zorganizuj</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Zaloguj się</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+<main role="main" class="container">
+
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Twoje anulowane wydarzenia</h6>
+        <div class="media text-muted pt-3 border-bottom border-gray">
+            <img src="http://i6.offers.gallery/p-96-89-9689e537492ded0fa75fac3765193c3b200x200/siatkowka-pilka-siatkarska-spokey-play-ii-zolty-5902693200888.jpg" alt="" class="mr-2 rounded" width="48" height="48">
+
+            <p class="media-body pb-3 mb-0 small lh-125 event-info">
+                <strong class="d-block text-gray-dark"><a href="#">Siatkówka</a></strong>
+
+                <span><i class="fa fa-clock"></i> Poniedziałek, 17:30 - 19:30</span>
+                <span><i class="fa fa-map-marker"></i> Hala Sportowa</span>
+                <span class="text-success"><i class="fa fa-users"></i> 6/11 uczestników</span>
+                <span><i class="fa fa-star"></i> Początkujący</span>
+                <span><i class="fa fa-money-bill-alt"></i> 10 PLN</span>
+            </p>
+
+
+        </div>
+
+        <div class="media text-muted pt-3">
+            <img src="https://www.asport.com.pl/thumb/sportech/17/pi%C5%82ki/sc3166%20803_1_Y4A_mini~minsmall~0.jpg" alt="" class="mr-2 rounded" width="48" height="48">
+
+            <p class="media-body mb-0 small border-gray event-info">
+                <strong class="d-block text-gray-dark"><a href="#">Piłka Nożna</a></strong>
+
+                <span><i class="fa fa-clock"></i> Wtorek, 20:30 - 22:30</span>
+                <span><i class="fa fa-map-marker"></i> Orlik</span>
+                <span class="text-success"><i class="fa fa-users"></i> 2/4 uczestników</span>
+                <span><i class="fa fa-star"></i> Zaawansowany</span>
+                <span class="text-success"><i class="fa fa-money-bill-alt"></i> DARMOWA</span>
+            </p>
+        </div>
+    </div>
+
+    <form class="mb-3 mt-3">
+      <div class="form-row">
+        <div class="col form-group">
+            <select type="text" class="custom-select" id="event_type">
+                <option value="1">Siatkówka</option>
+            </select>
+        </div>
+        <div class="col">
+            <select type="text" class="custom-select" placeholder="First name">
+                <option value="1">Początkujący</option>
+            </select>
+        </div>
+
+      </div>
+    </form>
+
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Aktywne wydarzenia </h6>
+
+        <div class="media text-muted pt-3 border-bottom border-gray">
+            <img src="http://i6.offers.gallery/p-96-89-9689e537492ded0fa75fac3765193c3b200x200/siatkowka-pilka-siatkarska-spokey-play-ii-zolty-5902693200888.jpg" alt="" class="mr-2 rounded" width="48" height="48">
+
+            <p class="media-body pb-3 mb-0 small lh-125 event-info">
+                <strong class="d-block text-gray-dark">Siatkówka</strong>
+
+                <span><i class="fa fa-clock"></i> Poniedziałek, 17:30 - 19:30</span>
+                <span><i class="fa fa-map-marker"></i> Hala Sportowa</span>
+                <span class="text-success"><i class="fa fa-users"></i> 6/11 uczestników</span>
+                <span><i class="fa fa-star"></i> Początkujący</span>
+                <span><i class="fa fa-money-bill-alt"></i> 10 PLN</span>
+
+                <div class="pull-md-right">
+                    <a href="#" class="btn btn-success">Chcę pograć</a>
+                </div>
+            </p>
+
+
+        </div>
+
+        <div class="media text-muted pt-3">
+            <img src="https://www.asport.com.pl/thumb/sportech/17/pi%C5%82ki/sc3166%20803_1_Y4A_mini~minsmall~0.jpg" alt="" class="mr-2 rounded" width="48" height="48">
+
+            <p class="media-body mb-0 small border-gray event-info">
+                <strong class="d-block text-gray-dark">Piłka Nożna</strong>
+
+                <span><i class="fa fa-clock"></i> Wtorek, 20:30 - 22:30</span>
+                <span><i class="fa fa-map-marker"></i> Orlik</span>
+                <span class="text-success"><i class="fa fa-users"></i> 2/4 uczestników</span>
+                <span><i class="fa fa-star"></i> Zaawansowany</span>
+                <span class="text-success"><i class="fa fa-money-bill-alt"></i> DARMOWA</span>
+
+                <div class="pull-md-right">
+                    <a href="#" class="btn btn-success">Zapisany</a>
+                </div>
+            </p>
+        </div>
+
+        <small class="d-block text-left mt-3">
+            <a href="#">Więcej...</a>
+        </small>
+    </div>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+<script src="bootstrap-material-design-dist/js/bootstrap-material-design.min.js"></script>
+</body>
+</html>
