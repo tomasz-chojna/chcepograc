@@ -1,2 +1,1 @@
 FROM openjdk:9-slim
-
