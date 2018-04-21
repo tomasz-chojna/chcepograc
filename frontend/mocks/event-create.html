@@ -7,185 +7,171 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="bootstrap-material-design-dist/css/bootstrap-material-design.min.css">
     <link rel="stylesheet" href="css/offcanvas.css">
-    <link rel="stylesheet" href="css/form-validation.css">
 
     <title>Chcę pograć!</title>
 </head>
 <body>
-<nav class="container navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light container">
 
     <a class="navbar-brand" href="#">
         <img src="img/run.svg" width="30" height="30" class="d-inline-block align-top" alt="">
         Chcę Pograć!
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="event-list.html">Lista wydarzeń <span class="sr-only">(current)</span></a>
-            </li>
             <li class="nav-item">
+                <a class="nav-link" href="event-list.html">Wydarzenia <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
                 <a class="nav-link" href="event-create.html">Zorganizuj</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="login.html">Zaloguj się</a>
             </li>
-            <!--<li class="nav-item dropdown">-->
-            <!--<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-            <!--Dropdown-->
-            <!--</a>-->
-            <!--<div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-            <!--<a class="dropdown-item" href="#">Action</a>-->
-            <!--<a class="dropdown-item" href="#">Another action</a>-->
-            <!--<div class="dropdown-divider"></div>-->
-            <!--<a class="dropdown-item" href="#">Something else here</a>-->
-            <!--</div>-->
-            <!--</li>-->
-            <!--<li class="nav-item">-->
-            <!--<a class="nav-link disabled" href="#">Disabled</a>-->
-            <!--</li>-->
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <input class="form-control mr-sm-2" type="search" placeholder="Szukaj" aria-label="Szukaj">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Szukaj</button>
         </form>
     </div>
 </nav>
 
 <main role="main" class="container">
-    <div class="py-5 text-center">
-        <!--<img class="d-b mock lock mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">-->
-        <h2>Zorganizuj wydarzenie</h2>
-        <p class="lead">Zaplanuj i utwórz wydarzenie sportowe podając podane w formularzu wytyczne. Po wysłaniu formularza organizowane przez Ciebie wydarzenie zostanie automatycznie dodane do systemu.</p>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <h4 class="mb-3">Specyfika wydarzenia</h4>
-            <form class="needs-validation" novalidate>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="name">Nazwa wydarzenia</label>
-                        <input type="text" class="form-control" id="name" placeholder="Gierka w piątek" value=""
-                               required>
-                        <div class="invalid-feedback">
-                            Wpisz poprawną nazwę.
+        <div class="py-5 text-center">
+            <!--<img class="d-b mock lock mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">-->
+            <h2>Zorganizuj wydarzenie</h2>
+            <p class="lead">Zaplanuj i utwórz wydarzenie sportowe podając podane w formularzu wytyczne. Po wysłaniu formularza organizowane
+                przez Ciebie wydarzenie zostanie automatycznie dodane do systemu.</p>
+        </div>
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="mb-3">Specyfika wydarzenia</h4>
+                <form class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="name">Nazwa wydarzenia</label>
+                            <input type="text" class="form-control" id="name" placeholder="Gierka w piątek" value=""
+                                   required>
+                            <div class="invalid-feedback">
+                                Wpisz poprawną nazwę.
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="sport">Sport</label>
+                            <select class="custom-select d-block w-100" id="sport" required>
+                                <option value="">Wybierz...</option>
+                                <option selected>Siatkówka</option>
+                                <option>Piłka nożna</option>
+                                <option>Koszykówka</option>
+                                <option>Squash</option>
+                                <option>Tenis</option>
+                                <option>Taniec</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Wybierz sport.
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="price">Koszt uczestnictwa</label>
+                            <input type="text" class="form-control" id="price" placeholder="10 zł" value="" required>
+                            <div class="invalid-feedback">
+                                Podaj koszt uczestnictwa
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-3 mb-3">
-                        <label for="sport">Sport</label>
-                        <select class="custom-select d-block w-100" id="sport" required>
-                            <option value="">Wybierz...</option>
-                            <option selected>Siatkówka</option>
-                            <option>Piłka nożna</option>
-                            <option>Koszykówka</option>
-                            <option>Squash</option>
-                            <option>Tenis</option>
-                            <option>Taniec</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            Wybierz sport.
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="location">Lokalizacja</label>
+                            <input type="text" class="form-control" id="location" placeholder="Sala sportowa na ul. Sportowej" value="" required>
+                            <div class="invalid-feedback">
+                                Wpisz lokalizację.
+                            </div>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <label for="city">Miasto</label>
+                            <input type="text" class="form-control" id="city" placeholder="Kraków" value="" required>
+                            <div class="invalid-feedback">
+                                Wpisz miasto.
+                            </div>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <label for="date-start">Rozpoczęcie</label>
+                            <input type="text" class="form-control" id="date-start" placeholder="15.05.2018" value=""
+                                   required>
+                            <div class="invalid-feedback">
+                                Wpisz poprawną datę.
+                            </div>
+                        </div>
+                        <div class="col-md-1 mb-3">
+                            <label for="time-start">Godzina</label>
+                            <input type="text" class="form-control" id="time-start" placeholder="15:30" value="" required>
+                            <div class="invalid-feedback">
+                                Wpisz poprawną godzinę.
+                            </div>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <label for="date-end">Zakończenie</label>
+                            <input type="text" class="form-control" id="date-end" placeholder="15.05.2018" value=""
+                                   required>
+                            <div class="invalid-feedback">
+                                Wpisz poprawną datę.
+                            </div>
+                        </div>
+                        <div class="col-md-1 mb-3">
+                            <label for="time-end">Godzina</label>
+                            <input type="text" class="form-control" id="time-end" placeholder="17:30" value="" required>
+                            <div class="invalid-feedback">
+                                Wpisz poprawną godzinę.
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-3 mb-3">
-                        <label for="price">Koszt uczestnictwa</label>
-                        <input type="text" class="form-control" id="price" placeholder="10 zł" value="" required>
-                        <div class="invalid-feedback">
-                            Podaj koszt uczestnictwa
+                    <div class="row">
+                        <div class="col-md-2 mb-3">
+                            <label for="vacancies">Liczba miejsc</label>
+                            <input type="text" class="form-control" id="vacancies" placeholder="10 osób" value="" required>
+                            <div class="invalid-feedback">
+                                Podaj poprawną ilość wymaganych osób
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="requiredLevel">Wymagany poziom</label>
+                            <select class="custom-select d-block w-100" id="requiredLevel" required>
+                                <option value="">Brak</option>
+                                <option selected>Nowy</option>
+                                <option>Rekreacyjny</option>
+                                <option>Zaawansowany początkujący</option>
+                                <option>Średnio zaawansowany</option>
+                                <option>Zaawansowany</option>
+                                <option>Gracze lig amatorskich</option>
+                                <option>Najwyższy poziom wtajemniczenia</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Wybierz wymagany poziom.
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="otherRequirements">Inne wymagania</label>
+                            <textarea class="form-control" id="otherRequirements"
+                                      placeholder="Np. Buty z jasną podeszwą"></textarea>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <label for="location">Lokalizacja</label>
-                        <input type="text" class="form-control" id="location" placeholder="Sala sportowa na ul. Sportowej" value="" required>
-                        <div class="invalid-feedback">
-                            Wpisz lokalizację.
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label for="description">Opis wydarzenia</label>
+                                <textarea class="form-control" id="description"
+                                          placeholder="Np. Zapraszamy osoby chętne do gierki w miłej atmosferze."></textarea>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-2 mb-3">
-                        <label for="city">Miasto</label>
-                        <input type="text" class="form-control" id="city" placeholder="Kraków" value="" required>
-                        <div class="invalid-feedback">
-                            Wpisz miasto.
-                        </div>
-                    </div>
-                    <div class="col-md-2 mb-3">
-                        <label for="date-start">Rozpoczęcie</label>
-                        <input type="text" class="form-control" id="date-start" placeholder="15.05.2018" value=""
-                               required>
-                        <div class="invalid-feedback">
-                            Wpisz poprawną datę.
-                        </div>
-                    </div>
-                    <div class="col-md-1 mb-3">
-                        <label for="time-start">Godzina</label>
-                        <input type="text" class="form-control" id="time-start" placeholder="15:30" value="" required>
-                        <div class="invalid-feedback">
-                            Wpisz poprawną godzinę.
-                        </div>
-                    </div>
-                    <div class="col-md-2 mb-3">
-                        <label for="date-end">Zakończenie</label>
-                        <input type="text" class="form-control" id="date-end" placeholder="15.05.2018" value=""
-                               required>
-                        <div class="invalid-feedback">
-                            Wpisz poprawną datę.
-                        </div>
-                    </div>
-                    <div class="col-md-1 mb-3">
-                        <label for="time-end">Godzina</label>
-                        <input type="text" class="form-control" id="time-end" placeholder="17:30" value="" required>
-                        <div class="invalid-feedback">
-                            Wpisz poprawną godzinę.
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-2 mb-3">
-                        <label for="vacancies">Liczba miejsc</label>
-                        <input type="text" class="form-control" id="vacancies" placeholder="10 osób" value="" required>
-                        <div class="invalid-feedback">
-                            Podaj poprawną ilość wymaganych osób
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="requiredLevel">Wymagany poziom</label>
-                        <select class="custom-select d-block w-100" id="requiredLevel" required>
-                            <option value="">Brak</option>
-                            <option selected>Nowy</option>
-                            <option>Rekreacyjny</option>
-                            <option>Zaawansowany początkujący</option>
-                            <option>Średnio zaawansowany</option>
-                            <option>Zaawansowany</option>
-                            <option>Gracze lig amatorskich</option>
-                            <option>Najwyższy poziom wtajemniczenia</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            Wybierz wymagany poziom.
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="otherRequirements">Inne wymagania</label>
-                        <textarea class="form-control" id="otherRequirements"
-                                  placeholder="Np. Buty z jasną podeszwą"></textarea>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                            <label for="description">Opis wydarzenia</label>
-                            <textarea class="form-control" id="description"
-                                      placeholder="Np. Zapraszamy osoby chętne do gierki w miłej atmosferze."></textarea>
-                        </div>
-                    </div>
-                </div>
-                <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Utwórz wydarzenie</button>
-            </form>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Utwórz wydarzenie</button>
+                </form>
+            </div>
         </div>
     </div>
 </main>
@@ -199,26 +185,26 @@
 <script src="bootstrap-material-design-dist/js/bootstrap-material-design.min.js"></script>
 
 <script>
-      // Example starter JavaScript for disabling form submissions if there are invalid fields
-      (function() {
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
         'use strict';
 
-        window.addEventListener('load', function() {
-          // Fetch all the forms we want to apply custom Bootstrap validation styles to
-          var forms = document.getElementsByClassName('needs-validation');
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
 
-          // Loop over them and prevent submission
-          var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-              if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-              }
-              form.classList.add('was-validated');
-            }, false);
-          });
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
         }, false);
-      })();
+    })();
 
 </script>
 </body>
