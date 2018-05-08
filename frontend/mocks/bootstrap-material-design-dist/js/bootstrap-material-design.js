@@ -1737,7 +1737,7 @@ var Modal = function ($$$1) {
             return;
           }
 
-          if (_this8._config.backdrop === 'static') {
+          if (_this8._config.backdrop === 'templates') {
             _this8._element.focus();
           } else {
             _this8.hide();
@@ -3557,7 +3557,7 @@ var Base = function ($$$1) {
     }; // ------------------------------------------------------------------------
     // private
     // ------------------------------------------------------------------------
-    // static
+    // templates
 
 
     return Base;
@@ -3571,7 +3571,7 @@ var BaseInput = function ($$$1) {
     FORM_GROUP: "form-group",
     BMD_FORM_GROUP: "bmd-form-group",
     BMD_LABEL: "bmd-label",
-    BMD_LABEL_STATIC: "bmd-label-static",
+    BMD_LABEL_STATIC: "bmd-label-templates",
     BMD_LABEL_PLACEHOLDER: "bmd-label-placeholder",
     BMD_LABEL_FLOATING: "bmd-label-floating",
     HAS_DANGER: "has-danger",
@@ -3928,7 +3928,7 @@ var BaseInput = function ($$$1) {
         }
       }
     }; // ------------------------------------------------------------------------
-    // static
+    // templates
 
 
     return BaseInput;
@@ -4109,7 +4109,7 @@ var Checkbox = function ($$$1) {
     // ------------------------------------------------------------------------
     // private
     // ------------------------------------------------------------------------
-    // static
+    // templates
 
 
     Checkbox._jQueryInterface = function _jQueryInterface(config) {
@@ -4187,7 +4187,7 @@ var CheckboxInline = function ($$$1) {
 
     _proto.dispose = function dispose() {
       _Checkbox.prototype.dispose.call(this, DATA_KEY);
-    }; //static matches($element) {
+    }; //templates matches($element) {
     //  // '.checkbox-inline > input[type=checkbox]'
     //  if ($element.attr('type') === 'checkbox') {
     //    return true
@@ -4195,7 +4195,7 @@ var CheckboxInline = function ($$$1) {
     //  return false
     //}
     //
-    //static rejectMatch(component, $element) {
+    //templates rejectMatch(component, $element) {
     //  Util.assert(this.$element, this.matches($element), `${component} component element ${Util.describe($element)} is invalid for type='checkbox'.`)
     //}
     // ------------------------------------------------------------------------
@@ -4205,7 +4205,7 @@ var CheckboxInline = function ($$$1) {
     // ------------------------------------------------------------------------
     // private
     // ------------------------------------------------------------------------
-    // static
+    // templates
 
 
     CheckboxInline._jQueryInterface = function _jQueryInterface(config) {
@@ -4321,7 +4321,7 @@ var CollapseInline = function ($$$1) {
     }; // ------------------------------------------------------------------------
     // private
     // ------------------------------------------------------------------------
-    // static
+    // templates
 
 
     CollapseInline._jQueryInterface = function _jQueryInterface(config) {
@@ -4466,7 +4466,7 @@ var File = function ($$$1) {
     }; // ------------------------------------------------------------------------
     // private
     // ------------------------------------------------------------------------
-    // static
+    // templates
 
 
     File._jQueryInterface = function _jQueryInterface(config) {
@@ -4570,7 +4570,7 @@ var Radio = function ($$$1) {
     // ------------------------------------------------------------------------
     // private
     // ------------------------------------------------------------------------
-    // static
+    // templates
 
 
     Radio._jQueryInterface = function _jQueryInterface(config) {
@@ -4655,7 +4655,7 @@ var RadioInline = function ($$$1) {
     // ------------------------------------------------------------------------
     // private
     // ------------------------------------------------------------------------
-    // static
+    // templates
 
 
     RadioInline._jQueryInterface = function _jQueryInterface(config) {
@@ -4790,7 +4790,7 @@ var Select = function ($$$1) {
     // ------------------------------------------------------------------------
     // private
     // ------------------------------------------------------------------------
-    // static
+    // templates
 
 
     Select._jQueryInterface = function _jQueryInterface(config) {
@@ -4869,7 +4869,7 @@ var Switch = function ($$$1) {
     // ------------------------------------------------------------------------
     // private
     // ------------------------------------------------------------------------
-    // static
+    // templates
 
 
     Switch._jQueryInterface = function _jQueryInterface(config) {
@@ -4962,7 +4962,7 @@ var Text = function ($$$1) {
     // ------------------------------------------------------------------------
     // private
     // ------------------------------------------------------------------------
-    // static
+    // templates
 
 
     Text._jQueryInterface = function _jQueryInterface(config) {
@@ -5051,7 +5051,7 @@ var Textarea = function ($$$1) {
     // ------------------------------------------------------------------------
     // private
     // ------------------------------------------------------------------------
-    // static
+    // templates
 
 
     Textarea._jQueryInterface = function _jQueryInterface(config) {
@@ -5353,7 +5353,7 @@ var Dropdown = function ($$$1) {
       }
 
       return popperConfig;
-    }; // static
+    }; // templates
 
 
     Dropdown._jQueryInterface = function _jQueryInterface(config) {
@@ -5696,7 +5696,7 @@ var BaseLayout = function ($$$1) {
     }; // ------------------------------------------------------------------------
     // private
     // ------------------------------------------------------------------------
-    // static
+    // templates
 
 
     return BaseLayout;
@@ -5843,7 +5843,7 @@ var Drawer = function ($$$1) {
         this.$toggles.attr("aria-expanded", isOpen);
       }
     }; // ------------------------------------------------------------------------
-    // static
+    // templates
 
 
     Drawer._jQueryInterface = function _jQueryInterface(config) {
@@ -6161,7 +6161,7 @@ var Ripples = function ($$$1) {
     _proto._getNewSize = function _getNewSize() {
       return Math.max(this.$element.outerWidth(), this.$element.outerHeight()) / this.$decorator.outerWidth() * 2.5;
     }; // ------------------------------------------------------------------------
-    // static
+    // templates
 
 
     Ripples._jQueryInterface = function _jQueryInterface(config) {
@@ -6279,7 +6279,7 @@ var Autofill = function ($$$1) {
         clearInterval(focused);
       });
     }; // ------------------------------------------------------------------------
-    // static
+    // templates
 
 
     Autofill._jQueryInterface = function _jQueryInterface(config) {
@@ -6351,7 +6351,7 @@ var BootstrapMaterialDesign = function ($$$1) {
     global: {
       validate: false,
       label: {
-        className: "bmd-label-static" // default style of label to be used if not specified in the html markup
+        className: "bmd-label-templates" // default style of label to be used if not specified in the html markup
 
       }
     },
@@ -6489,7 +6489,7 @@ var BootstrapMaterialDesign = function ($$$1) {
 
       return selector;
     }; // ------------------------------------------------------------------------
-    // static
+    // templates
 
 
     BootstrapMaterialDesign._jQueryInterface = function _jQueryInterface(config) {
