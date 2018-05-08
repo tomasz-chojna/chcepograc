@@ -4,6 +4,7 @@ import chcepograc.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import chcepograc.repositories.UserRepository;
@@ -15,10 +16,10 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping(path="/")
+    @PostMapping(path="/")
     public @ResponseBody
-    Iterable<User> all() {
-        return userRepository.findAll();
+    User create() {
+        return userRepository.findById(1L).get();
     }
 
 }
