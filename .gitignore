@@ -2,3 +2,6 @@
 target
 out
 .env
+src/main/resources/public/js/*
+frontend/node_modules/
+node_modules/
