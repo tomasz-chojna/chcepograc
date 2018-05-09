@@ -72,10 +72,7 @@ public class EventController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteEvent(@PathVariable(value = "id") Integer eventId, HttpServletResponse response) {
         Optional<Event> event = findEventOrResponseNotFound(eventId, response);
-        if (event == null) {
-            response.setStatus(404);
-            return null;
-        }
+        if (event == null) return null;
 
         if (!validEventOwnershipOrResponseForbidden(response, event)) return null;
 
