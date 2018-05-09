@@ -71,8 +71,9 @@ ALTER TABLE event_participants ADD CONSTRAINT event_id_fk
 INSERT INTO users (id, first_name, last_name, phone, email, password, salt)
 VALUES (DEFAULT, 'John', 'Doe', '123456789', 'john@doe.com', '123123', 'salt');
 
-INSERT INTO event_types VALUES (DEFAULT, 'siatkowka', '');
+INSERT INTO event_types (id, name, image)
+VALUES (DEFAULT, 'siatkowka', '');
 
-INSERT INTO events (id, name, price, start, "end", max_participants, place, skill_level, description, owner, event_type)
+INSERT INTO events (id, name, price, start_time, end_time, max_participants, place, skill_level, description, owner, event_type)
 VALUES (DEFAULT, 'First event', '20.00', '1999-01-08 04:05:06', '1999-01-08 04:05:06', 10, 'stadion', 'basic', 'abcd...', 1, 1);
 

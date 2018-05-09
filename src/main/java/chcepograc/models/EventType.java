@@ -6,7 +6,8 @@ import javax.persistence.*;
 @Table(name = "event_types")
 public class EventType {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "serial")
     private Integer id;
 
     private String name;
