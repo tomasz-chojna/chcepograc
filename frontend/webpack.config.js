@@ -1,10 +1,11 @@
-var path = require('path');
-var fs = require('fs');
+const path = require('path');
+const fs = require('fs');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: 'production',
 
-    entry: './js/app.js',
+    entry: ['./js/index.js'],
 
     output: {
         path: path.resolve(__dirname, '../target/classes/public/js/'),
@@ -31,5 +32,12 @@ module.exports = {
                 },
             },
         ]
-    }
+    },
+    plugins: [
+        new CopyWebpackPlugin([
+            { from: './js/*', to: '../'},
+            { from: './css/*', to: '../'},
+            { from: './img/*', to: '../'}
+        ])
+    ]
 };

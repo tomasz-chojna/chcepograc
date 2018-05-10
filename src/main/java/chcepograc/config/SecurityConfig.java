@@ -15,7 +15,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http.authorizeRequests()
-                .antMatchers("/", "/api/users/", "/api/users/logins", "/js/**").permitAll()
+                // TODO: For early development real matchers are disabled:
+                .regexMatchers(".*")
+//                .antMatchers("/", "/api/users/", "/api/users/logins", "/js/**", "/css/**", "/img/**")
+                .permitAll()
                 .anyRequest().authenticated()
                 .and()
             .logout()
