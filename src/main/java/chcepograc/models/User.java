@@ -1,5 +1,7 @@
 package chcepograc.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -43,6 +45,11 @@ public class User {
 
     public String getEmail() {
         return email;
+    }
+
+    @JsonIgnore
+    public String getPassword() {
+        return password;
     }
 
     public void setId(Integer id) {

@@ -1,5 +1,6 @@
 package chcepograc.config;
 
+import chcepograc.security.CustomAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -9,14 +10,20 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    CustomAuthenticationProvider authenticationProvider;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // TODO: For MVP it's disabled, should be enabled in prod and handled in the frontend app
         http.csrf().disable();
 
         http.authorizeRequests()
-                .antMatchers("/", "/api/users/", "/api/users/logins", "/js/**").permitAll()
+                .antMatchers("/api/users/", "/js/**").permitAll()
                 .anyRequest().authenticated()
+                .and()
+            .formLogin()
+                .loginPage("/login").permitAll()
                 .and()
             .logout()
                 .permitAll();
@@ -24,6 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-
+        auth.authenticationProvider(authenticationProvider);
     }
+
+
 }

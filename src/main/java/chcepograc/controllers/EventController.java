@@ -10,6 +10,9 @@ import chcepograc.repositories.EventTypeRepository;
 import chcepograc.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -43,6 +46,7 @@ public class EventController {
     }
 
     @PostMapping("/")
+    @PreAuthorize("hasRole('USER')")
     public Event create(@Valid @RequestBody CreateEvent requestParams, HttpServletResponse response) {
         Optional<User> owner = findCurrentUserOrResponseForbidden(response);
         if (owner == null) return null;
@@ -91,10 +95,8 @@ public class EventController {
     }
 
     private Optional<User> findCurrentUserOrResponseForbidden(HttpServletResponse response) {
-
-        // TODO: resolve current User ID and pass as Owner when login feature will be ready
-
-        Optional<User> owner = userRepository.findById(1);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Optional<User> owner = userRepository.findByEmail(auth.getName());
         if (!owner.isPresent()) {
             response.setStatus(403);
             return null;
