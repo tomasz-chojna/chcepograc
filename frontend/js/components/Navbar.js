@@ -29,6 +29,9 @@ export default class Navbar extends React.Component {
                         <li className="nav-item">
                             <a className="nav-link" href="/login">Zaloguj się</a>
                         </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/logout">Wyloguj się</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
