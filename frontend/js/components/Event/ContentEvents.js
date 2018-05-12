@@ -8,9 +8,9 @@ export default class ContentEvents extends React.Component {
     render() {
         return (
             <Switch>
-                <Route exact path='/events' component={EventsList}/>
-                <Route path='/events/create' component={EventCreate}/>
-                <Route path='/events/:id' component={Event}/>
+                <Route exact path='/app/events' component={EventsList}/>
+                <Route path='/app/events/create' component={EventCreate}/>
+                <Route path='/app/events/:id' component={Event}/>
             </Switch>
         )
     }

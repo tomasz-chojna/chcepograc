@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-    @GetMapping(path="/")
-    public String home() {
+    @GetMapping(path="/app/**")
+    public String app() {
         return "index.html";
     }
 
@@ -16,4 +16,8 @@ public class HomeController {
         return "login.html";
     }
 
+    @GetMapping("/")
+    public String home() {
+        return "redirect:/app/events";
+    }
 }

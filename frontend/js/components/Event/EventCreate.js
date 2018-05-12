@@ -7,7 +7,7 @@ export default class EventCreate extends React.Component {
         this.state = {
             name: "Jakaś nazwa",
             sport: 1,
-            price: "10zł",
+            price: "10.00",
             location: "Lokacja",
             city: "Miasto",
             dateStart: "2018-05-09",
@@ -47,6 +47,7 @@ export default class EventCreate extends React.Component {
             headers: new Headers({
                 'Content-Type': 'application/json'
             }),
+            credentials: 'include',
             body: JSON.stringify({
                 "name": data.name,
                 "price": data.price,
@@ -97,7 +98,7 @@ export default class EventCreate extends React.Component {
         if (error/* || (isLoaded && !success)*/) {
             return <div>Error: {error.message}</div>;
         } else if (isLoaded && success) {
-            return <Redirect to={`/events/${response.id}`}/>;
+            return <Redirect to={`/app/events/${response.id}`}/>;
         } else {
             return (
                 <div>

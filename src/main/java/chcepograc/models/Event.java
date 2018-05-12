@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Optional;
 
@@ -21,7 +22,7 @@ public class Event {
 
     private String name;
 
-    private String price;
+    private BigDecimal price;
 
     @DateTimeFormat
     @NotNull
@@ -53,7 +54,7 @@ public class Event {
 
     public Event populate(CreateEvent data) {
         this.setName(data.getName());
-        this.setPrice(data.getPrice());
+        this.setPrice(new BigDecimal(data.getPrice()));
         this.setPlace(data.getPlace());
         this.setMaxParticipants(data.getMaxParticipants());
         this.setStartTime(data.getStartTime());
@@ -66,7 +67,7 @@ public class Event {
 
     public Event populate(UpdateEvent data) {
         this.setName(Optional.ofNullable(data.getName()).orElse(getName()));
-        this.setPrice(Optional.ofNullable(data.getPrice()).orElse(getPrice()));
+//        this.setPrice(Optional.ofNullable(data.getPrice()).orElse(getPrice()));
         this.setPlace(Optional.ofNullable(data.getPlace()).orElse(getPlace()));
         this.setMaxParticipants(Optional.ofNullable(data.getMaxParticipants()).orElse(getMaxParticipants()));
         this.setStartTime(Optional.ofNullable(data.getStartTime()).orElse(getStartTime()));
@@ -85,7 +86,7 @@ public class Event {
         return name;
     }
 
-    public String getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
@@ -125,7 +126,7 @@ public class Event {
         this.name = name;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

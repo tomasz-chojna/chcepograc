@@ -75,5 +75,5 @@ INSERT INTO event_types (id, name, image)
 VALUES (DEFAULT, 'siatkowka', '');
 
 INSERT INTO events (id, name, price, start_time, end_time, max_participants, place, skill_level, description, owner, event_type)
-VALUES (DEFAULT, 'First event', '20.00', '1999-01-08 04:05:06', '1999-01-08 04:05:06', 10, 'stadion', 'basic', 'abcd...', 1, 1);
+VALUES (DEFAULT, 'Another event', '20.00', '2018-05-18 04:05:06', '2018-05-18 06:05:06', 10, 'Sala Gimnastyczna', 'advanced', 'abcd...', 1, 1);
 

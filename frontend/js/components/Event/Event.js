@@ -55,15 +55,13 @@ export default class Event extends React.Component {
                                 <h4>Specyfika</h4>
                                 <ul className="list-group list-group-flush">
                                     <li className="list-group-item border-bottom"><i className="fa fa-arrow-up"></i>Wymagany
-                                        poziom: Średnio zaawansowany
+                                        poziom: {event.skillLevel}
                                     </li>
                                     <li className="list-group-item border-bottom"><i className="fa fa-users"></i>Wolne
                                         miejsca: {event.maxParticipants}
                                     </li>
-                                    <li className="list-group-item border-bottom"><i className="fa fa-clock"></i>Czas
-                                        trwania: 1.5h
-                                    </li>
-                                    <li className="list-group-item border-bottom"><i className="fa fa-calendar-alt"></i>Termin: {event.startTime}
+                                    <li className="list-group-item border-bottom"><i className="fa fa-calendar-alt"></i>
+                                        Termin: {event.startTime}
                                     </li>
                                     <li className="list-group-item border-bottom"><i
                                         className="fa fa-money-bill-alt"></i>Koszt uczestnictwa: {event.price}
@@ -78,11 +76,7 @@ export default class Event extends React.Component {
                             <div className="col-md-6 mb-3">
                                 <h4>Uczestnicy</h4>
                                 <ul className="list-group list-group-flush">
-                                    <li className="list-group-item">Adam Kowalski (Mock)</li>
-                                    <li className="list-group-item">Piotr Rozmarynowski (Mock)</li>
-                                    <li className="list-group-item">Tomasz Chojna (Mock)</li>
-                                    <li className="list-group-item">Alicja Konieczna (Mock)</li>
-                                    <li className="list-group-item">Józef Ziomek (Mock)</li>
+                                    <li className="list-group-item">...</li>
                                 </ul>
                             </div>
                         </div>

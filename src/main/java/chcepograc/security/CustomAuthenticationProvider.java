@@ -16,12 +16,15 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     @Autowired
     private UserRepository userRepository;
+
+    private Logger logger = Logger.getLogger(CustomAuthenticationProvider.class.getName());
 
     @Transactional
     @Override
@@ -31,11 +34,13 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
         Optional<User> user = userRepository.findByEmail(name);
         if (!user.isPresent()) {
+            logger.warning(String.format("User with email=%s not found", name));
             throw new BadCredentialsException("Email or password invalid");
         }
 
         User foundUser = user.get();
         if (!foundUser.checkPassword(password)) {
+            logger.warning(String.format("User %s filled wrong password=%s, should be %s", password, foundUser.getPassword()));
             throw new BadCredentialsException("Email or password invalid");
         }
 

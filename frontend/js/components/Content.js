@@ -7,8 +7,7 @@ export default class Content extends React.Component {
         return (
             <main>
                 <Switch>
-                    <Route path='/events' component={ContentEvents}/>
-                    {/*<Route exact path='/login' component={Login}/>*/}
+                    <Route path='/app/events' component={ContentEvents}/>
                 </Switch>
             </main>
         );
