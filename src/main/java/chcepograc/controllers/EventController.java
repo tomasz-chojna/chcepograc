@@ -74,6 +74,7 @@ public class EventController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> deleteEvent(@PathVariable(value = "id") Integer eventId, HttpServletResponse response) {
         Optional<Event> event = findEventOrResponseNotFound(eventId, response);
         if (event == null) return null;
@@ -83,6 +84,38 @@ public class EventController {
         eventRepository.delete(event.get());
 
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/{id}/join")
+    @PreAuthorize("hasRole('USER')")
+    public User join(@PathVariable(value = "id") Integer eventId, HttpServletResponse response) {
+        Optional<User> user = findCurrentUserOrResponseForbidden(response);
+        if (user == null) return null;
+
+        Optional<Event> event = findEventOrResponseNotFound(eventId, response);
+        if (event == null) return null;
+
+        event.get().addParticipant(user.get());
+
+        eventRepository.save(event.get());
+
+        return user.get();
+    }
+
+    @DeleteMapping("/{id}/revoke")
+    @PreAuthorize("hasRole('USER')")
+    public User revoke(@PathVariable(value = "id") Integer eventId, HttpServletResponse response) {
+        Optional<User> user = findCurrentUserOrResponseForbidden(response);
+        if (user == null) return null;
+
+        Optional<Event> event = findEventOrResponseNotFound(eventId, response);
+        if (event == null) return null;
+
+        event.get().removeParticipant(user.get());
+
+        eventRepository.save(event.get());
+
+        return user.get();
     }
 
     private Optional<Event> findEventOrResponseNotFound(Integer eventId, HttpServletResponse response) {

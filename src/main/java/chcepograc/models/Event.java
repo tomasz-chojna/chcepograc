@@ -2,6 +2,7 @@ package chcepograc.models;
 
 import chcepograc.api.CreateEvent;
 import chcepograc.api.UpdateEvent;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -10,7 +11,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 @Entity
 @Table(name = "events")
@@ -51,6 +54,14 @@ public class Event {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "event_type", nullable = false)
     private EventType eventType;
+
+    @ManyToMany
+    @JoinTable(name = "event_participants",
+            joinColumns = @JoinColumn(name = "event_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    @JsonManagedReference
+    private Set<User> participants = new HashSet<>();
 
     public Event populate(CreateEvent data) {
         this.setName(data.getName());
@@ -162,6 +173,22 @@ public class Event {
 
     public Event setEventType(EventType eventType) {
         this.eventType = eventType;
+
+        return this;
+    }
+
+    public Set<User> getParticipants() {
+        return participants;
+    }
+
+    public Event addParticipant(User user) {
+        participants.add(user);
+
+        return this;
+    }
+
+    public Event removeParticipant(User user) {
+        participants.remove(user);
 
         return this;
     }

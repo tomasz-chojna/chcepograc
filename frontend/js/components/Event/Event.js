@@ -1,4 +1,5 @@
 import React from 'react';
+import EventParticipants from "./EventParticipants";
 
 export default class Event extends React.Component {
     constructor(props) {
@@ -16,32 +17,27 @@ export default class Event extends React.Component {
     }
 
     componentDidMount() {
-        fetch(`/api/events/${parseInt(this.props.match.params.id, 10)}`)
+        fetch(`/api/events/${this.props.match.params.id}`)
             .then(res => res.json())
-            .then(
-                (result) => {
-                    this.setState({
-                        isLoaded: true,
-                        event: result
-                    });
-                },
-                // Note: it's important to handle errors here
-                // instead of a catch() block so that we don't swallow
-                // exceptions from actual bugs in components.
-                (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                    });
-                }
-            )
+            .then((result) => ({
+                    isLoaded: true,
+                    event: result
+                }),
+                (error) => ({
+                    isLoaded: true,
+                    error
+                })
+            ).then((newState) => this.setState(newState))
     }
 
     render() {
         const event = this.state.event;
 
-        if (!event) {
-            return <div>Sorry, but the event was not found</div>
+        if (!this.state.isLoaded) {
+            if (!event) {
+                return <div>Nie znaleziono wydarzenia.</div>
+            }
+            return <div>Ładowanie...</div>
         }
 
         return (
@@ -57,8 +53,8 @@ export default class Event extends React.Component {
                                     <li className="list-group-item border-bottom"><i className="fa fa-arrow-up"></i>Wymagany
                                         poziom: {event.skillLevel}
                                     </li>
-                                    <li className="list-group-item border-bottom"><i className="fa fa-users"></i>Wolne
-                                        miejsca: {event.maxParticipants}
+                                    <li className="list-group-item border-bottom"><i className="fa fa-users"></i>
+                                        Zajęte miejsca: {event.participants.length} / {event.maxParticipants}
                                     </li>
                                     <li className="list-group-item border-bottom"><i className="fa fa-calendar-alt"></i>
                                         Termin: {event.startTime}
@@ -74,10 +70,7 @@ export default class Event extends React.Component {
                                 </ul>
                             </div>
                             <div className="col-md-6 mb-3">
-                                <h4>Uczestnicy</h4>
-                                <ul className="list-group list-group-flush">
-                                    <li className="list-group-item">...</li>
-                                </ul>
+                                <EventParticipants event={event}/>
                             </div>
                         </div>
                     </div>

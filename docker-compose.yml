@@ -11,18 +11,18 @@ services:
     working_dir: /project/frontend
     networks:
       - chcepograc-net
-#    command: "npm start"
+    command: "webpack --watch"
     tty: true
-  backend:
-    build: docker/backend
-    ports:
-      - ${BACKEND_PORT}:8080
-    volumes:
-      - ./:/project
-    working_dir: /project
-    networks:
-      - chcepograc-net
-    command: "java -jar /project/out/artifacts/chcepograc_jar/app.jar"
+#  backend:
+#    build: docker/backend
+#    ports:
+#      - ${BACKEND_PORT}:8080
+#    volumes:
+#      - ./:/project
+#    working_dir: /project
+#    networks:
+#      - chcepograc-net
+#    command: "java -jar /project/out/artifacts/chcepograc_jar/app.jar"
   db:
     image: postgres:alpine
     restart: always
