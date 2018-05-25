@@ -29,13 +29,7 @@ export default class EventParticipants extends React.Component {
                     loggedUser: user,
                     userParticipating: this.isUserParticipating(user.id),
                 }),
-                (error) => ({
-                    ajaxStatus: {
-                        isLoaded: true,
-                        success: false,
-                        error
-                    }
-                })
+                this.onAjaxError
             )
             .then((newState) => this.setState(newState))
     }
@@ -69,13 +63,7 @@ export default class EventParticipants extends React.Component {
                     participants: [...this.state.participants, user],
                     userParticipating: true
                 }),
-                (error) => ({
-                    ajaxStatus: {
-                        isLoaded: true,
-                        success: false,
-                        error
-                    }
-                })
+                this.onAjaxError
             )
             .then((newState) => this.setState(newState))
             .then(() => this.updateJoiningAvailable())
@@ -92,17 +80,19 @@ export default class EventParticipants extends React.Component {
                     participants: this.state.participants.filter((participant) => participant.id !== user.id),
                     userParticipating: false
                 }),
-                (error) => ({
-                    ajaxStatus: {
-                        isLoaded: true,
-                        success: false,
-                        error
-                    }
-                })
+                this.onAjaxError
             )
             .then((newState) => this.setState(newState))
             .then(() => this.updateJoiningAvailable())
     }
+
+    onAjaxError = (error) => ({
+        ajaxStatus: {
+            isLoaded: true,
+            success: false,
+            error
+        }
+    })
 
     render() {
         const joinButton = (
