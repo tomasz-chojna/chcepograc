@@ -11,6 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.util.Optional;
@@ -20,15 +23,11 @@ import java.util.Optional;
 public class UserController {
 
     @Autowired
-    private EntityManager entityManager;
-
-    @Autowired
     private UserRepository userRepository;
 
-    @Transactional
-    @PostMapping(path="/")
+    @PostMapping(path="/new")
     @ResponseBody
-    User register(@Valid @RequestBody UserCandidate userCandidate) {
+    User register(@Valid @RequestBody UserCandidate userCandidate, HttpServletRequest request) {
         User user = new User();
         user.setEmail(userCandidate.getEmail());
         user.setFirstName(userCandidate.getFirstName());
@@ -36,8 +35,13 @@ public class UserController {
         user.setPhone(userCandidate.getPhone());
         user.setPassword(userCandidate.getPassword());
 
-        entityManager.persist(user);
-        entityManager.flush();
+        userRepository.save(user);
+
+        try {
+            request.login(user.getEmail(), user.getPassword());
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
 
         return user;
     }

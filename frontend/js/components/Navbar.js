@@ -2,6 +2,28 @@ import React from 'react';
 import {Link} from "react-router-dom";
 
 export default class Navbar extends React.Component {
+
+    state = {
+        loggedUser: null,
+    };
+
+    componentDidMount() {
+        fetch(`/api/users/me`, {
+            headers: new Headers({'Content-Type': 'application/json'}),
+            credentials: 'include'
+        })
+            .then(res => res.json())
+            .then(
+                (user) => ({
+                    loggedUser: user,
+                }),
+                () => ({
+                    loggedUser: null
+                })
+            )
+            .then((newState) => this.setState(newState))
+    }
+
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light container">
@@ -26,14 +48,19 @@ export default class Navbar extends React.Component {
                         <li className={window.location.pathname === '/app/events/create' ? "nav-item active" : "nav-item"}>
                             <Link to='/app/events/create' className="nav-link" >Zorganizuj</Link>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/login">Zaloguj się</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/logout">Wyloguj się</a>
-                        </li>
+                        {this.state.loggedUser
+                            ? <li className="nav-item">
+                                <a className="nav-link" href="/logout">Wyloguj się</a>
+                            </li>
+                            : <li className="nav-item">
+                                <a className="nav-link" href="/login">Zaloguj się</a>
+                            </li>
+                        }
+
                     </ul>
                 </div>
+
+                {this.state.loggedUser ? <span>{this.state.loggedUser.email}</span> : null}
             </nav>
         );
     }

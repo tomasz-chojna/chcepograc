@@ -2,7 +2,6 @@ package chcepograc.models;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -15,8 +14,7 @@ public class EventParticipant {
     @Column(columnDefinition = "serial")
     private Integer id;
 
-    @CreatedDate
-    @Column(name = "created_at")
+    @Column(name = "created_at", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Date createdAt;
 
     @Fetch(FetchMode.JOIN)
