@@ -31,6 +31,8 @@ public class User {
 
     private String salt;
 
+    private String sessionToken;
+
     @ManyToMany(mappedBy = "participants", fetch = FetchType.LAZY)
     @JsonBackReference
     private Set<Event> participatingEvents = new HashSet<>();
@@ -87,6 +89,14 @@ public class User {
 
     public boolean checkPassword(String password) {
         return this.password.equals(password);
+    }
+
+    public String getSessionToken() {
+        return sessionToken;
+    }
+
+    public void setSessionToken(String token) {
+        this.sessionToken = token;
     }
 
     public Set<Event> getParticipatingEvents() {

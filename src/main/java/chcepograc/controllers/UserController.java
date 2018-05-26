@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.text.html.Option;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.util.Optional;
@@ -48,14 +49,23 @@ public class UserController {
             e.printStackTrace();
         }
 
+        user.setSessionToken(request.getSession().getId());
+
         return user;
     }
 
     @GetMapping("/me")
     @PreAuthorize("hasRole('USER')")
     @ResponseBody
-    public User me() {
-        return findCurrentOptionalUser().orElse(null);
+    public User me(HttpServletRequest request) {
+        Optional<User> user = findCurrentOptionalUser();
+        if (user.isPresent()) {
+            User foundUser = user.get();
+            foundUser.setSessionToken(request.getSession().getId());
+            return foundUser;
+        }
+
+        return null;
     }
 
     @GetMapping("/{id}")

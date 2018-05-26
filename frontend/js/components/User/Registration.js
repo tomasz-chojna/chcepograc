@@ -22,6 +22,7 @@ export default class Registration extends React.Component {
         fetch(`/api/users/new`, {
             method: 'POST',
             headers: new Headers({'Content-Type': 'application/json'}),
+            credentials: 'same-origin',
             body: JSON.stringify({
                 firstName: this.firstName.value,
                 lastName: this.lastName.value,
@@ -31,6 +32,7 @@ export default class Registration extends React.Component {
             })
         }).then(response => response.json()).then(response => {
             this.setState({registered: true});
+            window.location = '/app/events';
         });
     }
 
