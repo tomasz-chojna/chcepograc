@@ -1,7 +1,9 @@
 package chcepograc.controllers;
 
 import chcepograc.api.UserCandidate;
+import chcepograc.models.Event;
 import chcepograc.models.User;
+import chcepograc.repositories.EventRepository;
 import chcepograc.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -10,10 +12,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.util.Optional;
@@ -25,6 +26,10 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private EventRepository eventRepository;
+
+    @Transactional
     @PostMapping(path="/new")
     @ResponseBody
     User register(@Valid @RequestBody UserCandidate userCandidate, HttpServletRequest request) {
@@ -53,8 +58,35 @@ public class UserController {
         return findCurrentOptionalUser().orElse(null);
     }
 
+    @GetMapping("/{id}")
+    @ResponseBody
+    public User profile(@PathVariable(value = "id") Integer userId, HttpServletResponse response) {
+        Optional<User> user = findUserOrResponseNotFound(userId, response);
+        if (user == null) return null;
+
+        return user.get();
+    }
+
+    @GetMapping("/{id}/events/{type}")
+    @ResponseBody
+    public Iterable<Event> all(@PathVariable("id") Integer userId, @PathVariable("type") String type, HttpServletResponse response) {
+        Optional<User> user = findUserOrResponseNotFound(userId, response);
+        if (user == null) return null;
+
+        return eventRepository.findAll(user.get(), type);
+    }
+
     private Optional<User> findCurrentOptionalUser() {
         Authentication auth  = SecurityContextHolder.getContext().getAuthentication();
         return userRepository.findByEmail(auth.getName());
+    }
+
+    private Optional<User> findUserOrResponseNotFound(Integer userId, HttpServletResponse response) {
+        Optional<User> user = userRepository.findById(userId);
+        if (!user.isPresent()) {
+            response.setStatus(404);
+            return null;
+        }
+        return user;
     }
 }

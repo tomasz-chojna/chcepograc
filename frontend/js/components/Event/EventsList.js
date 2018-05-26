@@ -38,7 +38,7 @@ export default class EventsList extends React.Component {
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
-            return <div>Loading...</div>;
+            return <div>Ładowanie danych...</div>;
         } else {
             return (
                 <div className="my-3 p-3 bg-white rounded box-shadow">
