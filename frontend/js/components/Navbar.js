@@ -29,8 +29,7 @@ export default class Navbar extends React.Component {
             <nav className="navbar navbar-expand-lg navbar-light bg-light container">
 
                 <a className="navbar-brand" href="/app/events">
-                    <img src="img/run.svg" width="30" height="30" className="d-inline-block align-top" alt=""/>
-                    Chcę Pograć!
+                    <img src="/img/run.svg" width="30" height="30" className="d-inline-block align-top" alt=""/> Chcę Pograć!
                 </a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
