@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-// todo: component Button nie chce działać
 // import Button from 'react-uikit-button';
 
 export default class EventParticipants extends React.Component {
@@ -112,7 +111,7 @@ export default class EventParticipants extends React.Component {
         return (
             <div>
                 <h4>Uczestnicy
-                    {this.state.joiningAvailable
+                    {this.state.joiningAvailable && (this.state.loggedUser != null)
                         ? (!this.state.userParticipating ? joinButton : revokeButton)
                         : (!this.state.userParticipating ? '': revokeButton)
                     }
