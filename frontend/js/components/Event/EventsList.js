@@ -44,11 +44,11 @@ export default class EventsList extends React.Component {
                 <div className="my-3 p-3 bg-white rounded box-shadow">
                     {events.map(event => (
                             <div className="media text-muted pt-3 border-bottom border-gray" key={event.id}>
-                                <img src={event.eventType.image} alt="" className="mr-2 rounded" width="48" height="48"/>
+                                <img src={event.eventType.image}  alt={event.eventType.name} className="mr-2 rounded" width="48" height="48"/>
 
                                     <p className="media-body pb-3 mb-0 small lh-125 event-info">
                                         <strong className="d-block text-gray-dark mb-1">
-                                            <Link to={`/app/events/${event.id}`}> ({event.eventType.name}) {event.name}</Link>
+                                            <Link to={`/app/events/${event.id}`}>{event.name}</Link>
                                         </strong>
 
                                         <span><i className="fa fa-clock"></i> {event.startTime}</span>
