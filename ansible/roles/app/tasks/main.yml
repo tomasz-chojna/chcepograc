@@ -44,4 +44,5 @@
     path: /srv/chce-pograc/frontend/
 
 - name: Build webpack
+  become: yes
   shell: cd /srv/chce-pograc/frontend; ./node_modules/webpack/bin/webpack.js

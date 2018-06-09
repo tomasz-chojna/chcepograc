@@ -48,7 +48,7 @@ export default class EventsList extends React.Component {
 
                                     <p className="media-body pb-3 mb-0 small lh-125 event-info">
                                         <strong className="d-block text-gray-dark mb-1">
-                                            <Link to={`/app/events/${event.id}`}>{event.name}</Link>
+                                            <Link to={`/app/events/${event.id}`}> ({event.eventType.name}) {event.name}</Link>
                                         </strong>
 
                                         <span><i className="fa fa-clock"></i> {event.startTime}</span>
