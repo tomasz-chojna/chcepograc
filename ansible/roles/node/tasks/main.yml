@@ -1,0 +1,25 @@
+---
+
+- name: Add node gpg
+  become: yes
+  apt_key: url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+
+- name: Add NodeSource deb repository
+  become: yes
+  apt_repository: repo='deb https://deb.nodesource.com/node_8.x trusty main' state=present
+
+- name: Add NodeSource deb-src repository
+  become: yes
+  apt_repository: repo='deb-src https://deb.nodesource.com/node_8.x trusty main' state=present
+
+- name: Install nodejs
+  become: yes
+  apt: name={{ item }} update_cache=yes force=yes state=installed
+  with_items:
+    - nodejs
+
+- name: Installing webpack
+  become: yes
+  npm: name={{ item }} global=yes
+  with_items:
+    - webpack

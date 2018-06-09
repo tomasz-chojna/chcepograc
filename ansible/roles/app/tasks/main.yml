@@ -1,0 +1,47 @@
+---
+
+- name: Install dependencies
+  become: yes
+  apt: name={{item}} update_cache=yes force=yes state=latest
+  with_items:
+    - git
+    - postgresql
+    - python-psycopg2
+
+- name: Create app directory
+  become: yes
+  file:
+    path: /srv/chce-pograc
+    state: directory
+    mode: 0755
+    owner: ubuntu
+
+- name: Clone repository
+  git:
+    repo: 'https://github.com/tomasz-chojna/chcepograc.git'
+    dest: /srv/chce-pograc
+    clone: yes
+    force: yes
+    accept_hostkey: yes
+
+- name: Create database
+  become: true
+  become_user: postgres
+  postgresql_db:
+    name: chcepograc
+
+- name: Create database user
+  become: yes
+  become_user: postgres
+  postgresql_user:
+    db: chcepograc
+    name: admin
+    password: admin
+    priv: ALL
+
+- name: Install packages based on package.json.
+  npm:
+    path: /srv/chce-pograc/frontend/
+
+- name: Build webpack
+  shell: cd /srv/chce-pograc/frontend; ./node_modules/webpack/bin/webpack.js

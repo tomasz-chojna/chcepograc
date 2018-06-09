@@ -1,0 +1,15 @@
+---
+
+- name: chce-pograc
+  hosts: all
+  remote_user: ubuntu
+  gather_facts: False
+  pre_tasks:
+    - raw: test -e /usr/bin/python || (sudo apt -y update && sudo apt install -y python-minimal)
+    - setup: # aka gather_facts
+  vars_files:
+    - envs/all.yml
+  roles:
+    - java
+    - node
+    - { role: app, tags: ['app'] }
