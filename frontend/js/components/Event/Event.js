@@ -10,10 +10,6 @@ export default class Event extends React.Component {
             isLoaded: false,
             event: null
         }
-
-        // this.event = EventAPI.get(
-        //     parseInt(props.match.params.id, 10)
-        // )
     }
 
     componentDidMount() {
@@ -44,7 +40,10 @@ export default class Event extends React.Component {
             <div className="my-3 p-3 bg-white rounded box-shadow">
                 <div className="row">
                     <div className="col-md-12">
-                        <h2 className="mb-0">({event.eventType.name}) {event.name}</h2>
+                        <h2 className="mb-0">
+                            <img src={event.eventType.image} alt={event.eventType.name} className="mr-2 rounded" width="48" height="48"/>
+                            {event.name}
+                        </h2>
                         <span className="text-muted">{event.place}</span>
                         <div className="row mt-3">
                             <div className="col-md-6">
